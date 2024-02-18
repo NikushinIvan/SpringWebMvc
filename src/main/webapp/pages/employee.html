@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+    <title>Сотрудники</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Позиция</th>
+        <th>Отдел</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee: ${employees}">
+        <td><a th:href="@{/employee/{id}(id=${employee.id})}" th:text="${employee.id}">id</a></td>
+        <td th:text="${employee.firstName}">firstName</td>
+        <td th:text="${employee.lastName}">lastName</td>
+        <td th:text="${employee.position}">position</td>
+        <td th:text="${employee.department}">department</td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/employee/create}">Создать</a>
+</body>
+</html>

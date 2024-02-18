@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Создать сотрудника</title>
+</head>
+<body>
+<form th:action="@{/employee}" th:method="POST" th:object="${employee}">
+  <div>
+    <input type="text" th:name="firstName" th:field="*{firstName}" placeholder="Имя сотрудника">
+  </div>
+  <div>
+    <input type="text" th:name="lastName" th:field="*{lastName}" placeholder="Фамилия сотрудника">
+  </div>
+  <div>
+    <select th:field="*{position}">
+      <option th:each="position: ${positions}"
+              th:text="${position}"
+              th:value="${position}">
+        Позиция</option>
+    </select>
+  </div>
+  <div>
+    <select th:field="*{department}">
+      <option th:each="department: ${departments}"
+              th:text="${department}"
+              th:value="${department}">
+        Позиция</option>
+    </select>
+  </div>
+  <button type="submit">Создать!</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="/css/styles.css">
+  <meta charset="UTF-8">
+  <title>Профиль сотрудника</title>
+</head>
+<body>
+  <div th:object="${employee}">
+    <p>Имя: <span th:text="*{#object.firstName}">name</span></p>
+    <p>Фамилия: <span th:text="*{#object.lastName}">lastName</span></p>
+    <p>Позиция: <span th:text="*{#object.position}">position</span></p>
+    <p>Отдел: <span th:text="*{#object.department}">department</span></p>
+    <form th:action="@{/employee/{id}(id=*{#object.id})}" th:method="delete">
+      <button>Удалить</button>
+    </form>
+  </div>
+</body>
+</html>

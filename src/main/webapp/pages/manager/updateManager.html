@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Обновление данных руководителя</title>
+</head>
+<body>
+<form th:action="@{/manager/{id}(id=*{#object.id})}" th:method="PUT" th:object="${manager}">
+  <div>
+    <input type="text" th:name="firstName" th:field="*{firstName}" placeholder="Имя руководителя">
+  </div>
+  <div>
+    <input type="text" th:name="lastName" th:field="*{lastName}" placeholder="Фамилия руководителя">
+  </div>
+  <div>
+    <select th:field="*{department}">
+      <option th:each="department: ${departments}"
+              th:text="${department}"
+              th:value="${department}">
+        Отдел</option>
+    </select>
+  </div>
+  <button type="submit">Изменить!</button>
+</form>
+</body>
+</html>

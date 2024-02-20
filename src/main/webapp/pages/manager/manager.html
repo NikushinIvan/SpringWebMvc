@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+    <title>Руководители</title>
+</head>
+<body>
+<h1>Руководители:</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отдел</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="manager: ${managers}">
+        <td th:text="${manager.id}">id</td>
+        <td><a th:href="@{/manager/{id}(id=${manager.id})}" th:text="${manager.firstName}">firstName</a></td>
+        <td th:text="${manager.lastName}">lastName</td>
+        <td th:text="${manager.department}">department</td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/manager/create}">Создать нового руководителя</a><br/>
+<a th:href="@{/}">Главная страница</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="/css/styles.css">
+  <meta charset="UTF-8">
+  <title>Профиль Руководителя</title>
+</head>
+<body>
+<div th:object="${manager}">
+  <p>Имя: <span th:text="*{#object.firstName}">name</span></p>
+  <p>Фамилия: <span th:text="*{#object.lastName}">lastName</span></p>
+  <p>Отдел: <span th:text="*{#object.department}">department</span></p>
+  <p>Команда:</p>
+  <table>
+    <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Фамилия</th>
+      <th>Позиция</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee: *{#object.employees}">
+      <td><a th:href="@{/employee/{id}(id=${employee.id})}" th:text="${employee.firstName}">firstName</a></td>
+      <td th:text="${employee.lastName}">lastName</td>
+      <td th:text="${employee.position}">position</td>
+    </tr>
+    </tbody>
+  </table>
+  <form th:action="@{/manager/{id}/update(id=*{#object.id})}" th:method="get">
+    <button>Редактировать</button>
+  </form>
+  <form th:action="@{/manager/{id}(id=*{#object.id})}" th:method="delete">
+    <button>Удалить</button>
+  </form>
+</div>
+<a th:href="@{/manager}">К списку руководителей</a>
+</body>
+</html>

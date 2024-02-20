@@ -11,6 +11,9 @@ public class Manager {
     private Department department;
     private List<Employee> employees;
 
+    public Manager() {
+    }
+
     public Manager(int id, String firstName, String lastName, Department department, List<Employee> employees) {
         this(firstName, lastName, department, employees);
         this.id = id;
@@ -61,5 +64,13 @@ public class Manager {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+    }
+
+    public void removeEmployee(int id) {
+        employees.removeIf((e) -> e.getId() == id);
     }
 }

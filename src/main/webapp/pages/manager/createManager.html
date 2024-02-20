@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Создать руководителя</title>
+</head>
+<body>
+<form th:action="@{/manager}" th:method="POST" th:object="${manager}">
+  <div>
+    <input type="text" th:name="firstName" th:field="*{firstName}" placeholder="Имя руководителя">
+  </div>
+  <div>
+    <input type="text" th:name="lastName" th:field="*{lastName}" placeholder="Фамилия руководителя">
+  </div>
+  <div>
+    <select th:field="*{department}">
+      <option th:each="department: ${departments}"
+              th:text="${department}"
+              th:value="${department}">
+        Отдел</option>
+    </select>
+  </div>
+  <button type="submit">Создать!</button><br/>
+  <a th:href="@{/manager}">Назад</a>
+</form>
+</body>
+</html>

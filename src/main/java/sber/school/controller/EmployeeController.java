@@ -51,10 +51,26 @@ public class EmployeeController {
         return "redirect:/employee";
     }
 
+    @PutMapping("/{id}")
+    public String putEmployee(@PathVariable int id, @ModelAttribute Employee employee) {
+        employeeService.updateEmployee(id, employee);
+        return "redirect:/employee/" + id;
+    }
+
     @GetMapping("/create")
     public ModelAndView showCreate(ModelAndView modelAndView) {
         modelAndView.setViewName("createEmployee");
         Employee employee = new Employee();
+        modelAndView.addObject(employee);
+        modelAndView.addObject("positions", Position.values());
+        modelAndView.addObject("departments", Department.values());
+        return modelAndView;
+    }
+
+    @GetMapping("/{id}/update")
+    public ModelAndView showUpdate(@PathVariable int id, ModelAndView modelAndView) {
+        modelAndView.setViewName("updateEmployee");
+        Employee employee = employeeService.getEmployee(id);
         modelAndView.addObject(employee);
         modelAndView.addObject("positions", Position.values());
         modelAndView.addObject("departments", Department.values());

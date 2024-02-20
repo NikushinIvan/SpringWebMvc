@@ -18,14 +18,15 @@
     </thead>
     <tbody>
     <tr th:each="employee: ${employees}">
-        <td><a th:href="@{/employee/{id}(id=${employee.id})}" th:text="${employee.id}">id</a></td>
-        <td th:text="${employee.firstName}">firstName</td>
+        <td th:text="${employee.id}">id</td>
+        <td><a th:href="@{/employee/{id}(id=${employee.id})}" th:text="${employee.firstName}">firstName</a></td>
         <td th:text="${employee.lastName}">lastName</td>
         <td th:text="${employee.position}">position</td>
         <td th:text="${employee.department}">department</td>
     </tr>
     </tbody>
 </table>
-<a th:href="@{/employee/create}">Создать</a>
+<a th:href="@{/employee/create}">Создать нового сотрудника</a><br/>
+<a th:href="@{/}">Назад</a>
 </body>
 </html>

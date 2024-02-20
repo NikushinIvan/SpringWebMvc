@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Создать сотрудника</title>
+  <title>Обновление данных сотрудника</title>
 </head>
 <body>
-<form th:action="@{/employee}" th:method="POST" th:object="${employee}">
+<form th:action="@{/employee/{id}(id=*{#object.id})}" th:method="PUT" th:object="${employee}">
   <div>
     <input type="text" th:name="firstName" th:field="*{firstName}" placeholder="Имя сотрудника">
   </div>
@@ -28,8 +28,7 @@
         Позиция</option>
     </select>
   </div>
-  <button type="submit">Создать!</button><br/>
-  <a th:href="@{/employee}">Назад</a>
+  <button type="submit">Изменить!</button>
 </form>
 </body>
 </html>

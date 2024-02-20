@@ -26,7 +26,7 @@ public class EmployeeController {
     public ModelAndView getAll(ModelAndView model) {
         List<Employee> employees = employeeService.getEmployees();
         model.addObject("employees", employees);
-        model.setViewName("employee");
+        model.setViewName("employee/employee");
 
         return model;
     }
@@ -41,7 +41,7 @@ public class EmployeeController {
     public ModelAndView getEmployee(ModelAndView model, @PathVariable int id) {
         Employee employee = employeeService.getEmployee(id);
         model.addObject("employee", employee);
-        model.setViewName("profile");
+        model.setViewName("employee/profile");
         return model;
     }
 
@@ -59,7 +59,7 @@ public class EmployeeController {
 
     @GetMapping("/create")
     public ModelAndView showCreate(ModelAndView modelAndView) {
-        modelAndView.setViewName("createEmployee");
+        modelAndView.setViewName("employee/createEmployee");
         Employee employee = new Employee();
         modelAndView.addObject(employee);
         modelAndView.addObject("positions", Position.values());
@@ -69,7 +69,7 @@ public class EmployeeController {
 
     @GetMapping("/{id}/update")
     public ModelAndView showUpdate(@PathVariable int id, ModelAndView modelAndView) {
-        modelAndView.setViewName("updateEmployee");
+        modelAndView.setViewName("employee/updateEmployee");
         Employee employee = employeeService.getEmployee(id);
         modelAndView.addObject(employee);
         modelAndView.addObject("positions", Position.values());

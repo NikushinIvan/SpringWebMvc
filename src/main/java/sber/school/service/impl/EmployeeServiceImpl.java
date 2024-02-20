@@ -1,6 +1,5 @@
 package sber.school.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sber.school.model.Employee;
 import sber.school.repository.EmployeeRepository;

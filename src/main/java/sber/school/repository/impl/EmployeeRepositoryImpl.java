@@ -50,6 +50,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         oldEmployee.setFirstName(updatedEmployee.getFirstName());
         oldEmployee.setLastName(updatedEmployee.getLastName());
         oldEmployee.setPosition(updatedEmployee.getPosition());
+        oldEmployee.setDepartment(updatedEmployee.getDepartment());
     }
 
     @Override
